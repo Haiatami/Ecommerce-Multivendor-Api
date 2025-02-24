@@ -3,6 +3,7 @@ package com.hoanghai.ecommerce.multivendor.api.controllers;
 import com.hoanghai.ecommerce.multivendor.api.entities.VerificationCode;
 import com.hoanghai.ecommerce.multivendor.api.enums.UserRole;
 import com.hoanghai.ecommerce.multivendor.api.repository.UserRepository;
+import com.hoanghai.ecommerce.multivendor.api.request.LoginRequest;
 import com.hoanghai.ecommerce.multivendor.api.request.SignupRequest;
 import com.hoanghai.ecommerce.multivendor.api.responses.ApiResponse;
 import com.hoanghai.ecommerce.multivendor.api.responses.AuthResponse;
@@ -44,5 +45,13 @@ public class AuthController {
         res.setMessage("otp sent successfully");
 
         return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<AuthResponse> loginHandler(
+            @RequestBody LoginRequest req) throws Exception {
+        AuthResponse authResponse = authService.signing(req);
+
+        return ResponseEntity.ok(authResponse);
     }
 }
