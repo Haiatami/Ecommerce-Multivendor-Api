@@ -13,7 +13,7 @@ public class PaymentDetails {
 
     private String razorpayPaymentLinkStatus;
 
-    private String razorpayPaymentIdZWSP;
+    private String razorpayPaymentId;
 
     private PaymentStatus status;
 }

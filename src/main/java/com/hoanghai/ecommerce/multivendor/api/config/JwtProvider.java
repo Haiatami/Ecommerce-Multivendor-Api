@@ -17,12 +17,14 @@ import java.util.Set;
 public class JwtProvider {
     SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
-    public String generateToken(Authentication auth){
+    public String generateToken(Authentication auth) {
         Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+
         String roles = populateAuthorities(authorities);
+
         return Jwts.builder()
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime()+86400000))
+                .setExpiration(new Date(new Date().getTime() + 86400000))
                 .claim("email", auth.getName())
                 .claim("authorities", roles)
                 .signWith(key)
@@ -32,7 +34,8 @@ public class JwtProvider {
     public String getEmailFromJwtToken(String jwt){
         jwt = jwt.substring(7);
 
-        Claims claims = Jwts.parserBuilder().setSigningKey(key).build()
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key).build()
                 .parseClaimsJws(jwt).getBody();
 
         return String.valueOf(claims.get("email"));
@@ -40,10 +43,10 @@ public class JwtProvider {
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
         Set<String> auths = new HashSet<>();
-        for (GrantedAuthority authority : authorities) {
+
+        for(GrantedAuthority authority : authorities) {
             auths.add(authority.getAuthority());
         }
         return String.join(",", auths);
     }
-
 }

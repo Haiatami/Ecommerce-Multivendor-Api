@@ -1,14 +1,16 @@
 package com.hoanghai.ecommerce.multivendor.api.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class SellerReport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,9 +29,9 @@ public class SellerReport {
 
     private Long netEarnings = 0L;
 
-    private Long totalOrders = 0L;
+    private Integer totalOrders = 0;
 
-    private Long canceledOrders = 0L;
+    private Integer canceledOrders = 0;
 
-    private Long totalTransactions = 0L;
+    private Integer totalTransactions = 0;
 }

@@ -19,25 +19,36 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class AppConfig {
-
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.sessionManagement(management ->
-                management.sessionCreationPolicy(
-                        SessionCreationPolicy.STATELESS))
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.sessionManagement(management -> management.sessionCreationPolicy(
+                SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->
-                authorize
-                        .requestMatchers("/api/auth/**", "/api/users/**").permitAll()
-                        .requestMatchers("/api/products/*/reviews").permitAll()
-                        .requestMatchers("/api/**").authenticated()
-                        .anyRequest().authenticated())
+                        authorize
+                                .requestMatchers("/api/auth/**",
+                                        "/api/users",
+                                        "/api/sellers/**",
+                                        "/api/products/**",
+                                        "/api/sellers/products/**",
+                                        "/api/cart/**",
+                                        "/api/orders/**",
+                                        "/api/sellers/orders/**",
+                                        "/api/payment/**",
+                                        "/api/transactions/**",
+                                        "/api/wishlists/**",
+                                        "/api/products/*/reviews",
+                                        "/api/reviews/**",
+                                        "/api/coupons/**",
+                                        "/api/homes/categories/**").permitAll()
+                                .requestMatchers("/api/**").authenticated()
+                                .anyRequest().permitAll())
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-                return http.build();
+        return http.build();
     }
 
-    private CorsConfigurationSource corsConfigurationSource() {
+    private CorsConfigurationSource corsConfigurationSource(){
         return new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -54,12 +65,12 @@ public class AppConfig {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public RestTemplate restTemplate() {
+    public RestTemplate restTemplate(){
         return new RestTemplate();
     }
 }

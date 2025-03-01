@@ -3,7 +3,7 @@ package com.hoanghai.ecommerce.multivendor.api.utils;
 import java.util.Random;
 
 public class OtpUtil {
-    public static String generateOtp(){
+    public static String generateOtp() {
         int otpLength = 6;
 
         Random random = new Random();

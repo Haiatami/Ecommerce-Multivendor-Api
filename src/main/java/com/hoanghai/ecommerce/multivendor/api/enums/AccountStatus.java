@@ -6,5 +6,5 @@ public enum AccountStatus {
     SUSPENDED, // Account is temporarily suspended, possibly due to violations
     DEACTIVATED, // Account is deactivated, user may have chosen to deactivate it
     BANNED, // Account is permanently banned due to severe violations
-    CLOSED // Account is permanently closed, possibly at user request
+    CLOSED // Account is permanently closed possibly at user request
 }

@@ -1,10 +1,14 @@
 package com.hoanghai.ecommerce.multivendor.api.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Deal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

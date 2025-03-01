@@ -32,7 +32,7 @@ public class Order {
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @ManyToOne
-    private Address address;
+    private Address shippingAddress;
 
     @Embedded
     private PaymentDetails paymentDetails = new PaymentDetails();

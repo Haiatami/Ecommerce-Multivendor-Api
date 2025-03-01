@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Wishlist {
+public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

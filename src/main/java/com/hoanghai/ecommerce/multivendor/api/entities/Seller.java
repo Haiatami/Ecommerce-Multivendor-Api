@@ -4,7 +4,6 @@ import com.hoanghai.ecommerce.multivendor.api.enums.AccountStatus;
 import com.hoanghai.ecommerce.multivendor.api.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Getter
@@ -42,6 +41,4 @@ public class Seller {
     private boolean isEmailVerified = false;
 
     private AccountStatus accountStatus = AccountStatus.PENDING_VERIFICATION;
-
-
 }

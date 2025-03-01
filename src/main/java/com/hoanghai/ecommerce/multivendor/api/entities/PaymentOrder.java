@@ -32,5 +32,4 @@ public class PaymentOrder {
 
     @OneToMany
     private Set<Order> orders = new HashSet<>();
-
 }

@@ -1,7 +1,10 @@
 package com.hoanghai.ecommerce.multivendor.api.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -44,8 +47,8 @@ public class Product {
 
     private LocalDateTime createdAt;
 
-    // @ElementCollection
-    private String Sizes;
+//    @ElementCollection
+    private String sizes;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews = new ArrayList<>();
